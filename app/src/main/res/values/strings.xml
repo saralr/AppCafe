@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">CafeApp</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="name">Name</string>
+    <string name="wanna_some_coffee">Wanna some coffee ?!</string>
+    <string name="mail_address">Mail address</string>
+
+
+</resources>

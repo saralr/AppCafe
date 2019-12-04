@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "446474626275",
+    "firebase_url": "https://cafeapp-f493b.firebaseio.com",
+    "project_id": "cafeapp-f493b",
+    "storage_bucket": "cafeapp-f493b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:446474626275:android:6ea56c9aa383b80cbd51d6",
+        "android_client_info": {
+          "package_name": "com.example.cafeapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "446474626275-ve24sr5jfgmv5ivh9v8kidviif84iak9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBNaAWrKyk0VymY5m3gRNgnKQ1G2LMxhhk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "446474626275-ve24sr5jfgmv5ivh9v8kidviif84iak9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
