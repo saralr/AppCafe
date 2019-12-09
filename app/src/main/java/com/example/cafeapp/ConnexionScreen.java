@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -26,9 +27,16 @@ public class ConnexionScreen extends AppCompatActivity {
             @Override
             public void onClick(View v){
                 FirebaseAuth.getInstance().signOut();
-                Intent intToHome = new Intent(ConnexionScreen.this, HomeActivity.class);
-                startActivity(intToHome);
+                Intent intToLogin = new Intent(ConnexionScreen.this, Login.class);
+                onBackPressed();
+                intToLogin.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); //to clear all previous activities
+                startActivity(intToLogin);
             }
         });
     }
+    /*@Override
+    public void onBackPressed(){
+        Toast.makeText(ConnexionScreen.this, "Please Login again!", Toast.LENGTH_SHORT).show();
+
+    }*/
 }

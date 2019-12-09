@@ -70,7 +70,7 @@ public class HomeActivity extends AppCompatActivity {
                 }
             }
         });
-
+        // Already have an account? Sign in here
         tvSignIn.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){

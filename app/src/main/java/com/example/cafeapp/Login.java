@@ -62,7 +62,7 @@ public class Login extends AppCompatActivity {
                     emailId.requestFocus();
                 }
                 else if(pwd.isEmpty()){
-                    password.setError("Please enter your password");
+                    password.setError("Please enter a valid password");
                     password.requestFocus();
                 }
                 else if (email.isEmpty() && pwd.isEmpty()){
@@ -91,6 +91,7 @@ public class Login extends AppCompatActivity {
 
             }
         });
+        //Not registred yet? Sign up here!
         tvSignUp.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
