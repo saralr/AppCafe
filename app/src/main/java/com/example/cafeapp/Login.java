@@ -32,7 +32,9 @@ public class Login extends AppCompatActivity {
 
         mFirebaseAuth = FirebaseAuth.getInstance();
         emailId = findViewById(R.id.editText);
+        emailId.setAutofillHints(View.AUTOFILL_HINT_EMAIL_ADDRESS);
         password = findViewById(R.id.editText5);
+        password.setAutofillHints(View.AUTOFILL_HINT_PASSWORD);
         btnSignIn = findViewById(R.id.button3);
         tvSignUp = findViewById(R.id.textView);
 
@@ -88,6 +90,7 @@ public class Login extends AppCompatActivity {
                 {
                     Toast.makeText(Login.this, "Error Occured", Toast.LENGTH_SHORT).show();
                 }
+
 
             }
         });
