@@ -5,8 +5,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.method.HideReturnsTransformationMethod;
+import android.text.method.PasswordTransformationMethod;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -22,6 +26,8 @@ public class Login extends AppCompatActivity {
     public EditText emailId, password;
     Button btnSignIn;
     TextView tvSignUp;
+    TextView ForgotPassword;
+    CheckBox showpass;
     FirebaseAuth mFirebaseAuth;
     private FirebaseAuth.AuthStateListener mAuthStateListener;
 
@@ -37,6 +43,8 @@ public class Login extends AppCompatActivity {
         password.setAutofillHints(View.AUTOFILL_HINT_PASSWORD);
         btnSignIn = findViewById(R.id.button3);
         tvSignUp = findViewById(R.id.textView);
+        ForgotPassword = findViewById(R.id.Forgotpass);
+        showpass = findViewById(R.id.showpass);
 
         mAuthStateListener = new FirebaseAuth.AuthStateListener() {
             
@@ -53,6 +61,18 @@ public class Login extends AppCompatActivity {
                 }
             }
         };
+
+
+        showpass.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(isChecked){
+                    password.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+                }else {
+                    password.setTransformationMethod(PasswordTransformationMethod.getInstance());
+                }
+            }
+        });
 
         btnSignIn.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -90,10 +110,18 @@ public class Login extends AppCompatActivity {
                 {
                     Toast.makeText(Login.this, "Error Occured", Toast.LENGTH_SHORT).show();
                 }
-
-
             }
         });
+
+        //Forgot Password
+        ForgotPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+               Intent intForgotPass =  new Intent(Login.this, ForgotPassword.class);
+               startActivity(intForgotPass);
+            }
+        });
+
         //Not registred yet? Sign up here!
         tvSignUp.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -108,5 +136,4 @@ public class Login extends AppCompatActivity {
         super.onStart();
         mFirebaseAuth.addAuthStateListener(mAuthStateListener);
     }
-
 }
