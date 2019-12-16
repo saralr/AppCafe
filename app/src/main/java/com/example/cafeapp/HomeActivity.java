@@ -5,8 +5,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.method.HideReturnsTransformationMethod;
+import android.text.method.PasswordTransformationMethod;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -22,6 +26,7 @@ public class HomeActivity extends AppCompatActivity {
     Button btnSignUp;
     TextView tvSignIn;
     FirebaseAuth mFirebaseAuth;
+    CheckBox showpass;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +38,7 @@ public class HomeActivity extends AppCompatActivity {
         password = findViewById(R.id.editText5);
         btnSignUp = findViewById(R.id.button3);
         tvSignIn = findViewById(R.id.textView);
+        showpass = findViewById(R.id.showpass);
 
         btnSignUp.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -70,6 +76,20 @@ public class HomeActivity extends AppCompatActivity {
                 }
             }
         });
+
+        //Show password
+        showpass.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(isChecked){
+                    password.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+                }else{
+                    password.setTransformationMethod(PasswordTransformationMethod.getInstance());
+                }
+            }
+        });
+
+
         // Already have an account? Sign in here
         tvSignIn.setOnClickListener(new View.OnClickListener(){
             @Override
