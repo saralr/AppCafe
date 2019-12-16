@@ -20,7 +20,6 @@ public class SplashScreen extends AppCompatActivity {
                 Intent homeIntent = new Intent (SplashScreen.this, HomeActivity.class);
                 startActivity(homeIntent);
                 finish();
-
             }
         },SPLASH_TIME_OUT);
     }

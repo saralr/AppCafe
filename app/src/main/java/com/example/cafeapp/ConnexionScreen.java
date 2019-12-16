@@ -5,8 +5,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ListAdapter;
+import android.widget.ListView;
 
+import com.example.api.UserHelper;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class ConnexionScreen extends AppCompatActivity {
@@ -14,6 +18,8 @@ public class ConnexionScreen extends AppCompatActivity {
     Button btnLogout;
     FirebaseAuth mFirebaseAuth;
     private FirebaseAuth.AuthStateListener mAuthStateListener;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,5 +36,6 @@ public class ConnexionScreen extends AppCompatActivity {
                 startActivity(intToHome);
             }
         });
+
     }
 }

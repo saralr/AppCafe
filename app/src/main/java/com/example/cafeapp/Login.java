@@ -11,6 +11,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.api.UserHelper;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -44,6 +45,7 @@ public class Login extends AppCompatActivity {
                 if(mFirebaseUser != null){
                     Toast.makeText(Login.this, "You are logged in", Toast.LENGTH_SHORT).show();
                     Intent i = new Intent(Login.this, ConnexionScreen.class);
+                    Toast.makeText(Login.this, UserHelper.getAllUsers(), Toast.LENGTH_SHORT).show();
                     startActivity(i);
                 }
                 else{
