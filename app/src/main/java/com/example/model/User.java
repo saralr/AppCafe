@@ -22,35 +22,9 @@ public class User {
 
     private String mail;
     private String nom;
-    private int number;
+    private Integer number;
     private Map<User, Integer> paris;
 
-    /*public static HashMap<String, User> lesUsers;
-
-    private void initialiserUtilisateurs()
-    {
-        lesUsers = new HashMap<String, User>();
-        Log.i("OK","OK");
-        FirebaseDatabase.getInstance().getReference("Users")
-                .addValueEventListener(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(DataSnapshot dataSnapshot) {
-                            Log.i("test", "test");
-                            List<String> list = new ArrayList<>();
-                            for(DataSnapshot ds : dataSnapshot.getChildren()) {
-                                String uid = ds.getKey();
-                                list.add(uid);
-                                Log.i("key", uid);
-                            }
-                            //Do what you need to do with your list
-                        }
-
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                    }
-                });
-    }*/
 
     public String getMail() {
         return mail;
@@ -87,11 +61,11 @@ public class User {
     }
 
 
-    public int getNumber() {
+    public Integer getNumber() {
         return number;
     }
 
-    public void setNumber(int number) {
+    public void setNumber(Integer number) {
         this.number = number;
     }
 }

@@ -38,16 +38,18 @@ public class ConnexionScreen extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_connexion_screen);
+        aNumber = findViewById(R.id.textView3);
         FirebaseDatabase.getInstance().getReference().child("Users").orderByChild("mail").equalTo(FirebaseAuth.getInstance().getCurrentUser().getEmail())
                 .addChildEventListener(new ChildEventListener() {
                     @Override
                     public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-
+                        aUser = dataSnapshot.getValue(User.class);
+                        aNumber.setText(aUser.getNumber().toString());
                     }
 
                     public void onChildChanged(DataSnapshot dataSnapshot, String s) {
                         aUser = dataSnapshot.getValue(User.class);
-                        aNumber.setText(aUser.getNumber());
+                        aNumber.setText(aUser.getNumber().toString());
                     }
 
 
