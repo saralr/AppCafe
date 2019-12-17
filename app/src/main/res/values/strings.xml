@@ -5,6 +5,8 @@
     <string name="name">Name</string>
     <string name="wanna_some_coffee">Wanna some coffee ?!</string>
     <string name="mail_address">Mail address</string>
+    <string name="mail_adress">Mail adress</string>
+    <string name="send_new_password">Send new password</string>
 
 
 </resources>

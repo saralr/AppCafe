@@ -5,13 +5,16 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.method.HideReturnsTransformationMethod;
+import android.text.method.PasswordTransformationMethod;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.api.UserHelper;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -23,6 +26,8 @@ public class Login extends AppCompatActivity {
     public EditText emailId, password;
     Button btnSignIn;
     TextView tvSignUp;
+    TextView ForgotPassword;
+    CheckBox showpass;
     FirebaseAuth mFirebaseAuth;
     private FirebaseAuth.AuthStateListener mAuthStateListener;
 
@@ -33,9 +38,13 @@ public class Login extends AppCompatActivity {
 
         mFirebaseAuth = FirebaseAuth.getInstance();
         emailId = findViewById(R.id.editText);
+        emailId.setAutofillHints(View.AUTOFILL_HINT_EMAIL_ADDRESS);
         password = findViewById(R.id.editText5);
+        password.setAutofillHints(View.AUTOFILL_HINT_PASSWORD);
         btnSignIn = findViewById(R.id.button3);
         tvSignUp = findViewById(R.id.textView);
+        ForgotPassword = findViewById(R.id.Forgotpass);
+        showpass = findViewById(R.id.showpass);
 
         mAuthStateListener = new FirebaseAuth.AuthStateListener() {
             
@@ -45,7 +54,6 @@ public class Login extends AppCompatActivity {
                 if(mFirebaseUser != null){
                     Toast.makeText(Login.this, "You are logged in", Toast.LENGTH_SHORT).show();
                     Intent i = new Intent(Login.this, ConnexionScreen.class);
-                    Toast.makeText(Login.this, UserHelper.getAllUsers(), Toast.LENGTH_SHORT).show();
                     startActivity(i);
                 }
                 else{
@@ -53,6 +61,18 @@ public class Login extends AppCompatActivity {
                 }
             }
         };
+
+
+        showpass.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(isChecked){
+                    password.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+                }else {
+                    password.setTransformationMethod(PasswordTransformationMethod.getInstance());
+                }
+            }
+        });
 
         btnSignIn.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -64,7 +84,7 @@ public class Login extends AppCompatActivity {
                     emailId.requestFocus();
                 }
                 else if(pwd.isEmpty()){
-                    password.setError("Please enter your password");
+                    password.setError("Please enter a valid password");
                     password.requestFocus();
                 }
                 else if (email.isEmpty() && pwd.isEmpty()){
@@ -90,9 +110,19 @@ public class Login extends AppCompatActivity {
                 {
                     Toast.makeText(Login.this, "Error Occured", Toast.LENGTH_SHORT).show();
                 }
-
             }
         });
+
+        //Forgot Password
+        ForgotPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+               Intent intForgotPass =  new Intent(Login.this, ForgotPassword.class);
+               startActivity(intForgotPass);
+            }
+        });
+
+        //Not registred yet? Sign up here!
         tvSignUp.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
@@ -106,5 +136,4 @@ public class Login extends AppCompatActivity {
         super.onStart();
         mFirebaseAuth.addAuthStateListener(mAuthStateListener);
     }
-
 }
